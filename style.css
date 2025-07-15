@@ -1,0 +1,191 @@
+
+body {
+  background-color: black; /* Fondo negro */
+  color: white; /* Texto blanco */
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+main {
+  padding-top: 120px; /* Para que el contenido no quede tapado por el header fijo */
+}
+
+/* =================
+   Encabezado Fijo
+   ================= */
+.encabezado {
+  height: auto; /* Ajusta su altura según el contenido */
+  display: flex; /* Flexbox para ordenar los elementos */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: space-between; /* Separar logo y botones */
+  padding: 4px 10px;
+  background-color: #0000007a; /* Fondo negro semitransparente */
+  gap: 15px; /* Espacio entre elementos */
+  position: fixed; /* Que quede fijo al top */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Por encima de otros elementos */
+}
+
+/* Logo */
+.encabezado img {
+  width: 80px; /* Tamaño más chico para desktop */
+  border-radius: 200px; /* Borde redondo */
+}
+
+/* Contenedor de botones del header */
+.botones-derecha {
+  display: flex; /* Mostrar botones en fila */
+  gap: 10px; /* Espacio entre botones */
+  margin-left: auto; /* Empuja este bloque a la derecha */
+  color: #5c6f58;
+  margin-right: 5%;
+  flex-wrap: nowrap; /* Que no se rompan en varias filas */
+  overflow-x: auto; /* Scroll horizontal si hay muchos botones */
+  -webkit-overflow-scrolling: touch; /* Scroll suave en móviles */
+}
+
+.botones-derecha :hover {
+  color: black;
+  background-color: #7fa577; /* Cambio de color al pasar el mouse */
+}
+/* Estilos para cada botón */
+.boton-contacto {
+  margin: 5px 0;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 95px; /* Bordes bien redondos */
+  text-decoration: none;
+  color: #faead6;
+  background-color: #5c6f58;
+  display: inline-block;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  white-space: nowrap; /* Que el texto no haga salto de línea */
+  flex-shrink: 0; /* Que el botón no se achique */
+}
+
+/* =================
+   Contenedor Carrusel + Texto
+   ================= */
+.imagen-y-texto {
+  display: flex; /* Flexbox en fila */
+  justify-content: center; /* Centrar horizontal */
+  align-items: center; /* Centrar vertical */
+  gap: 30px; /* Espacio entre carrusel y texto */
+  padding-bottom: 20px;
+  flex-wrap: wrap; /* Que en pantallas chicas pase a columna */
+}
+
+/* =================
+   Texto de bienvenida
+   ================= */
+.texto-inicio {
+  background-color: #5c6f58; /* Fondo verde suave */
+  color: antiquewhite;
+  padding: 30px;
+  border-radius: 20px; /* Bordes redondeados */
+  text-align: center;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1); /* Sombra sutil */
+  line-height: 1.6; /* Espaciado entre líneas */
+  max-width: 400px; /* Ancho máximo */
+  height: 500px;
+  width: 100%;
+  flex-shrink: 0; /* No se achica en flexbox */
+}
+
+/* =================
+   Carrusel
+   ================= */
+#miCarrusel {
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Imágenes del carrusel */
+.carousel-item img {
+  width: 100%;
+  height: 500px; /* Altura fija para que las flechas se centren bien */
+  object-fit: cover; /* Ajuste de la imagen para cubrir el área */
+  border-radius: 20px;
+}
+
+.carousel-control-next {
+  right: 20px;
+}
+
+/* =================
+   Pie de Página (Footer)
+   ================= */
+.footer-redes {
+  text-align: center;
+  padding: 20px;
+  background-color: #5c6f5872; /* Fondo verde semitransparente */
+}
+
+.footer-redes p {
+  color: antiquewhite;
+  margin: 10px 0;
+  font-size: 14px;
+}
+.footer-redes a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: antiquewhite;
+  font-size: 30px;
+  transition: color 0.3s ease;
+}
+
+.footer-redes a:hover {
+  color: #7fa577; /* Cambio de color al pasar el mouse */
+}
+
+
+/* =================
+   Responsive para tablets y celulares grandes
+   ================= */
+@media (max-width: 1024px) {
+  .imagen-y-texto {
+    flex-direction: column; /* Pasa a columna */
+    align-items: center; /* Centra horizontalmente */
+    padding: 100px 15px 40px;
+    gap: 20px;
+  }
+
+  .texto-inicio,
+  #miCarrusel {
+    max-width: 90%;
+  }
+
+  .carousel-item img {
+    height: 300px; /* Altura menor para pantallas chicas */
+  }
+
+  .texto-inicio {
+    max-height: none; /* Que el texto se adapte */
+    height: auto;
+  }
+}
+
+/* =================
+   Responsive para celulares pequeños
+   ================= */
+@media (max-width: 480px) {
+  /* Logo más chico */
+  .encabezado img {
+    width: 60px;
+  }
+
+  /* Ajuste botones header */
+  .botones-derecha {
+    margin-right: 10px;
+  }
+
+  .boton-contacto {
+    margin: 5px 3px;
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
