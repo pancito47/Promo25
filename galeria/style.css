@@ -13,7 +13,7 @@ main {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-  padding-top: 20px; /* Para que el contenido no quede tapado por el header fijo */
+  padding-top: 100px; /* Para que el contenido no quede tapado por el header fijo */
 }
 section{
   background-color:rgb(50, 66, 46);
@@ -31,11 +31,12 @@ section{
   align-items: center; /* Centrar verticalmente */
   justify-content: space-between; /* Separar logo y botones */
   padding: 4px 10px;
-  background-color: #00000059; /* Fondo negro semitransparente */
+  background-color: #0000007a; /* Fondo negro semitransparente */
   gap: 15px; /* Espacio entre elementos */
+  position: fixed; /* Que quede fijo al top */
   top: 0;
   width: 100%;
- 
+  z-index: 1000; /* Por encima de otros elementos */
 }
 
 /* Logo */
@@ -184,7 +185,7 @@ a{
 .modal {
   display: none; /* Oculto por defecto */
   position: fixed;
-  z-index: 999;
+  z-index: 2000; /*hace que el modal esté por encima de otros elementos */
   left: 0; top: 0;
   width: 100%;
   height: 100%;
