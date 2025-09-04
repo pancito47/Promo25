@@ -13,7 +13,7 @@ main {
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-  padding-top: 100px; /* Para que el contenido no quede tapado por el header fijo */
+  padding-top: 20px; /* Para que el contenido no quede tapado por el header fijo */
 }
 section{
   background-color:rgb(50, 66, 46);
@@ -31,12 +31,11 @@ section{
   align-items: center; /* Centrar verticalmente */
   justify-content: space-between; /* Separar logo y botones */
   padding: 4px 10px;
-  background-color: #0000007a; /* Fondo negro semitransparente */
+  background-color: #00000059; /* Fondo negro semitransparente */
   gap: 15px; /* Espacio entre elementos */
-  position: fixed; /* Que quede fijo al top */
   top: 0;
   width: 100%;
-  z-index: 1000; /* Por encima de otros elementos */
+ 
 }
 
 /* Logo */
@@ -139,6 +138,22 @@ a{
 .item.alto {
   grid-row: span 2;
 }
+.item.grande {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.item.full {
+  grid-column: 1 / -1; /* Ocupar todas las columnas */
+  grid-row: span 1;    /* Solo una fila de alto */
+}
+
+@media (max-width: 600px) {
+  .item.full {
+    grid-row: span 1; /* Más alto en celular */
+  }
+}
+
 .galeria-carrusel {
   height: 100%;
   border-radius: 8px;
@@ -185,7 +200,7 @@ a{
 .modal {
   display: none; /* Oculto por defecto */
   position: fixed;
-  z-index: 2000; /*hace que el modal esté por encima de otros elementos */
+  z-index: 999;
   left: 0; top: 0;
   width: 100%;
   height: 100%;
@@ -322,5 +337,79 @@ a{
     margin: 5px 3px;
     padding: 8px 12px;
     font-size: 14px;
+  }
+}
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 1000;
+}
+
+/* Circulitos */
+.sidebar .circle {
+  width: 15px;
+  height: 15px;
+  background-color: #999;
+  border-radius: 50%;
+  display: block;
+  transition: 0.3s;
+  position: relative;
+}
+
+/* Hover */
+.sidebar .circle:hover {
+  background-color: #faead6;
+  transform: scale(1.2);
+}
+
+/* Tooltip */
+.sidebar .circle::after {
+  content: attr(title);
+  position: absolute;
+  left: 25px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.3s;
+  white-space: nowrap;
+}
+
+.sidebar .circle:hover::after {
+  opacity: 1;
+}
+
+/* Círculo activo */
+.sidebar .circle.active {
+  background-color: #96d689;
+  transform: scale(1.3);
+}
+
+/* Responsive: sidebar abajo */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: auto;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+  }
+
+  .sidebar .circle::after {
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
